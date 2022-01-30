@@ -1,0 +1,295 @@
+% TEMPLATE : FICHE DE REVISION
+\documentclass[12pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.5in,bottom=0.5in, left=0.7in, right=0.7in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage[unicode,psdextra]{hyperref}
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{bookmark}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,landscape]
+
+\titleformat*{\section}{\large\bfseries}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewcommand\qedsymbol{}
+\makeatother
+
+\theoremstyle{cstyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{cstyle}{\newtheorem{proposition}[definition]{Propriété}}
+\theoremstyle{mystyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercice}}
+\theoremstyle{mystyle}{\newtheorem*{methode}{Méthode}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={white},left=8pt,colframe=white,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Orange},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={blue!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,borderline west={2pt}{0pt}{Green!80},enhanced jigsaw,left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{methode}{boxrule=0pt,boxsep=0pt,colback={Aquamarine!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Aquamarine},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}
+
+%\renewcommand{\arraystretch}{1.5}
+
+
+\title{Chapitre 13 : Systèmes thermodynamiques}
+\author{}
+\date{}
+
+\setstretch{1.4}
+
+\begin{document}
+
+\maketitle
+
+\begin{minipage}[t]{0.45\textwidth}
+	\section{Description d'un système thermodynamique}
+	\begin{definition}[Système]
+		Portion de l'univers limité par une frontière, où l'on peut distinguer l'intérieur et l'extérieur de cette portion.
+	\end{definition}
+	\begin{definition}[Système thermodynamique]
+		Système possédant un très grand nombre de degrés de liberté.
+	\end{definition}
+	\begin{definition}[Système fermé]
+		Un système est fermé s'il n'échange pas de matière avec l'extérieur. Sinon il est ouvert.
+	\end{definition}
+	\begin{definition}[État macroscopique / microscopique]
+		\underline{L'état microscopique} est la description de la position et de la vitesse de chacun des constituants (impossible à déterminer).
+		
+		\underline{L'état macroscopique} est donné par des variables thermodynamique qui décrivent l'ensemble.
+	\end{definition}
+
+	\begin{definition}[Variable extensive]
+		Variable thermodynamique qui décrit le système dans son ensemble et s'ajoute avec l'union de deux systèmes.
+		
+		Exemples: mole, masse molaire, \dots
+	\end{definition}
+
+	
+	
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\begin{definition}[Mole]
+		Une mole correspond à \(\mathcal{N}_A = 6,02 \cdot 10^{23}\) éléments. \(\mathcal{N}_A\) est le nombre d'Avogadro.
+	\end{definition}
+	\begin{definition}[Masse molaire]
+		Masse d'une mole d'un entité (\(M = m \cdot \mathcal{N}_A\)).
+	\end{definition}
+	\begin{definition}[Variables intensives]
+		Variable thermodynamique qui décrit le système localement et ne varie pas lorsque l'on prend l'union de deux systèmes.
+		
+		Exemples: température, pression, masse volumique, \dots
+	\end{definition}
+
+	\begin{definition}[Température]
+		Variable intensive qui caractérise l'agitation désordonnée des atomes. 
+		
+		\underline{Unité :} \textbf{Kelvin (K)}
+		
+		Ou en \textbf{Celsius} : \(\theta(\degree C) = T(K) - 273,15\)
+	\end{definition}
+
+	\begin{definition}[Masse volumique d'un système]
+		Quotient de la masse par le volume du système : $\rho = \frac{m}{V}$ en \(kg/m^3\)
+	\end{definition}
+
+	
+	
+\end{minipage}
+
+\newpage
+\begin{minipage}[t]{0.45\textwidth}
+	
+	\begin{definition}[Pression]
+		Caractérise la force exercée par un fluide sur une paroi en contact avec lui. Cette force est :
+		\[ \vec{F} = P \cdot S \cdot \vec{n} \]
+		Avec $P$ la pression du fluide et $S$ la surface en contact.
+		
+		\underline{Unité :} \begin{itemize}
+			\item \textbf{Pascal (\(1Pa = 1N/m^2\))} 	
+			\item \textbf{bar \(1bar = 10^5 Pa\)}
+		\end{itemize}	
+	\end{definition}
+
+	\section{Coefficients thermoélastiques}
+	
+	\begin{definition}[Coefficient de dilatation isobare]
+		Pour un système fermé, le coefficient $\alpha$ est défini par :
+		\[
+		\alpha = \frac{1}{V} \frac{\partial V}{\partial T}\Big)_{P,n} \text{ en } K^{-1}
+		\]
+		
+		\underline{Interprétation :} lorsque la température augmente de d$T$ à pression constante, le volume augmente de \fbox{d$V = V \alpha$d$T$}
+	\end{definition}
+
+	\begin{definition}[Coefficient de compressibilité isotherme]
+		Pour un système fermé, le coefficient $\chi$ est défini par :
+		\[
+		\chi_T = -\frac{1}{V} \frac{\partial V}{\partial P}\Big)_{T,n} \text{ en } {Pa}^{-1}
+		\]
+		
+		\underline{Interprétation :} lorsque la pression augmente de d$P$ à température constante, le volume varie de \fbox{d$V = -V \chi_T$d$P$}
+	\end{definition}
+
+	
+	
+
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\begin{definition}[Coefficient sans nom $\beta$]
+		Pour un système fermé, le coefficient $\beta$ est défini par :
+		\[
+		\beta = \frac{1}{P} \frac{\partial P}{\partial T}\Big)_{V,n} \text{ en } K^{-1}
+		\]
+		
+		\underline{Interprétation :} lorsque la température augmente de d$T$ à volume constant, alors la pression augmente de \fbox{d$P = P \beta$d$T$}
+	\end{definition}
+
+	\section{Modèle de phases simples}
+	
+	\begin{definition}[Vitesse quadratique d'un gaz]
+		Elle est définie par :
+		\[
+			v^* = \sqrt{\langle \| \vec{v} \|^2 \rangle}
+		\]
+	\end{definition}
+
+	\begin{proposition}[Énergie cinétique d'un gaz parfait]
+		L'énergie cinétique moyenne $\langle e_c \rangle = \frac{1}{2}m{v^*}^2$ d'une molécule de masse $m$ dans un gaz à la température $T$ vaut :
+		\[
+		\langle e_c \rangle = \frac{3}{2} k_B \cdot T
+		\]
+		Avec $k_B = 1,38.10^{-23} J.K^{-1}$ constante de Boltzmann.
+		
+		L'énergie cinétique de $n$ moles de gaz parfait à la température T vaut donc :
+		\[
+		E_c = \frac{3}{2} n.\mathcal{N}_A.k_B.T
+		\]
+		On peut également poser $R = k_B. \mathcal{N}_A = 8,314J.K^{-1}.mol^{-1}$ qui est la constante des gaz parfaits.
+	\end{proposition}
+\end{minipage}
+
+\newpage
+\begin{minipage}[t]{0.45\textwidth}
+	\begin{proof}[Vitesse quadratique d'un gaz parfait]
+		On sait que pour un gaz parfait :
+		\[
+		\langle e_c \rangle = \frac{1}{2}m{v^*}^2 = \frac{3}{2} k_B T
+		\]
+		
+		Donc \fbox{$v^* = \sqrt{\frac{3k_BT}{m}} = \sqrt{\frac{3RT}{M}}$}
+	\end{proof}
+
+	\begin{proposition}[Équation d'état du gaz parfait]
+		Un gaz parfait homogène à l'équilibre vérifie :
+		\[PV = Nk_BT = nRT\]
+		Avec $R = 8,314J.K^{-1}.mol^{-1}$ 
+	\end{proposition}
+
+	\begin{definition}[Pression partielle d'un gaz dans un mélange]
+		Pression qu'aurait le constituant $i$ d'un mélange s'il était seul dans les mêmes conditions de température et de volume.
+	\end{definition}
+	\begin{proposition}[Pression d'un mélange idéal de gaz]
+		Dans un mélange idéal de gaz, les gaz sont indépendants les un des autres. Donc :
+		\[
+			P = \sum_k P_k
+		\]
+	\end{proposition}
+
+	\begin{proposition}[Pression d'un mélange idéal de gaz parfait]
+		Pour un mélange de gaz parfait :
+		\[
+			PV = \sum_k n_kRT = n_{\text{total}}RT
+		\]
+		Un mélange de gaz parfait se comporte comme un gaz parfait.
+	\end{proposition}
+\end{minipage}
+\hfill
+\vrule
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+	\begin{proposition}[Liquide/Solide incompressible/indilatable]
+		Conditions :
+		\begin{itemize}
+			\item Un solide/liquide indilatable à un coefficient $\alpha = 0$
+			\item Un solide/liquide incompressible a un coefficient $\chi = 0$
+			\item Si un solide/liquide est incompressible et indilatable alors $V = cst$
+		\end{itemize}
+	\end{proposition}
+\end{minipage}
+
+\end{document}
