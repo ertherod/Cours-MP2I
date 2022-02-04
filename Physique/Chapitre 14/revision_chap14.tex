@@ -1,5 +1,5 @@
 % TEMPLATE : FICHE DE REVISION
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[french]{babel}
 \usepackage[T1]{fontenc}
@@ -25,6 +25,7 @@
 \usepackage{titlesec}
 \usepackage[unicode,psdextra]{hyperref}
 \pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{pgfplots}
 \usepackage{bookmark}
 \hypersetup{
 	colorlinks,
@@ -33,6 +34,8 @@
 	linkcolor=black,
 	urlcolor=black
 }
+
+\graphicspath{ {./image} } 
 
 \titleformat*{\section}{\large\bfseries}
 
@@ -186,12 +189,6 @@
 			Avec \(E_\text{macro}\) qui désigne les énergies macroscopiques, comme l'énergie électrique ou mécanique.
 		\end{theorem}
 	
-		
-	\end{minipage}
-	\hfill
-	\vrule
-	\hfill
-	\begin{minipage}[t]{0.45\textwidth}
 		\section{Calcul d'énergies internes}
 		
 		\subsection{Capacité thermique / calorifique à volume constant}
@@ -204,6 +201,14 @@
 			
 			\underline{Interprétation :} si la température du système varie de \(\text{d}T\) à volume constant, alors son énergie interne varie de \fbox{\(\text{d}U = C_v \cdot \text{d}T\)}
 		\end{definition}
+	
+		
+	\end{minipage}
+	\hfill
+	\vrule
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		
 		\begin{definition}[$C_v$ molaire et massique] 
 			On définit deux grandeurs \underline{intensives} :
 			\begin{itemize}
@@ -221,10 +226,7 @@
 			Elle ne dépend que de la température. 
 			Sa capacité thermique molaire vaut \fbox{\(C_{vm} = \frac{3}{2}R = 12,5J/K/mol\)}
 		\end{proposition}
-	\end{minipage}
-
-	\newpage
-	\begin{minipage}[t]{0.45\textwidth}
+	
 		\begin{proposition}[Énergie interne d'un GP polyatomique]
 			L'énergie d'un GP polyatomique ne dépend que de la température.
 			On a :
@@ -237,7 +239,7 @@
 			\]
 			Dans la plupart des cas, on prend \fbox{\(C_{vm} = \frac{5}{2}R\)}
 		\end{proposition}
-	
+		
 		\begin{proposition}[Mélange idéal de gaz]
 			Dans le cas d'un mélange de gaz, \fbox{\(U = \sum_k U_k\)}.
 			On en déduit que :
@@ -247,19 +249,18 @@
 				\item \(c_{v} = \sum_k w_k c_{v,k}\), avec \(w_k\) fraction massique.
 			\end{itemize}
 		\end{proposition}
+	\end{minipage}
+
+	\newpage
+	\begin{minipage}[t]{0.45\textwidth}
+		
 	
 		\subsection{Liquides, solides}
 		
 		\begin{proposition}[Liquide ou solide incompressible et indilatable]
 			\(U\) et \(C_v\) ne dépendent que de la température.
 		\end{proposition}
-	\end{minipage}
-	\hfill
-	\vrule
-	\hfill
-	\begin{minipage}[t]{0.45\textwidth}
-		\section{Exemples de bilan énergétiques}
-		
+	
 		\begin{example}[Détente de Joule-Gay Lussac]
 			On prend une boîte indéformable calorifugée séparée en deux par une paroi et un robinet, et on met un gaz dans une des deux partie, le reste est vide : 
 			\begin{center}
@@ -283,43 +284,125 @@
 					\draw [line width= 1mm] (0,2.25) -- (0,4);					
 				\end{tikzpicture}
 			\end{center}
-		
+			
 			On prend comme système le contenu de la boîte : {le gaz + vide}. Avec le premier principe, on a :
 			\[
-				\Delta U_{vide} + \Delta U_{gaz} = W + Q
+			\Delta U_{vide} + \Delta U_{gaz} = W + Q
 			\]
 			
 			Or la boîte est calorifugée donc \(Q = 0\) et elle est indéformable donc \(W = 0\).
 			De plus le vide n'a pas d'énergie donc \fbox{\(\Delta U_{gaz} = 0\)}
 		\end{example}
 	
+		\section{Exemples de bilan énergétiques}
+		
 		\begin{definition}[Première loi de Joule]
 			Un fluide vérifie la loi si sa température ne varie pas lors d'une détente de Joule-Gay Lussac.
 		\end{definition}
 	\end{minipage}
-
-	\newpage
+	\hfill
+	\vrule
+	\hfill
 	\begin{minipage}[t]{0.45\textwidth}
 		\section{Transformations classiques}
 		\subsection{Généralités}
 		
 		\begin{definition}[Transformation quasi-statique]
-			
+			Transformation suffisamment lente pour que le système soit quasiment homogène à chaque instant. Les transformations réversible sont \underline{quasi-statique}.
 		\end{definition}
-	\end{minipage}
-	\hfill
-	\vrule
-	\hfill
-	\begin{minipage}[t]{0.45\textwidth}
+		
+		\begin{definition}[Transformation réversible mécaniquement]
+			Le système est indéformable ou la différence de pression entre deux parois mobiles est négligeable : \fbox{\(V = cst\) \textbf{OU} \(P_{ext} \approx P\)}
+		\end{definition}
+		
+		\begin{definition}[Transformation réversible thermiquement]
+			La transformation est adiabatique ou à chaque instant la différence de température entre deux parois est négligeable. \fbox{\(Q + 0\) \textbf{OU} \(T_{ext} \approx T\)}			
+		\end{definition}
+		
+		\subsection{Diagramme de Watt}
+		
+		\begin{definition}[Diagramme de Watt et diagramme de Clapeyron]
+			Le diagramme de Watt représente l'évolution quasi statique dans un système dans le plan \((P,V)\).
+			
+			Celui de Clapeyron la représente dans le plan \((P, v)\) (pour \(1kg\)).
+		\end{definition}
+		
+		\begin{proposition}[Travail dans le diagramme]
+			En notant \(V_i, V_f\) le volume initial et final, on a :
+			\[
+			W = - \int_{V_i}^{V_f} P.\text{d}V
+			\]
+		\end{proposition}
 	\end{minipage}
 
 	\newpage
 	\begin{minipage}[t]{0.45\textwidth}
+		\begin{definition}[Cycle moteur / récepteur]
+			Le cycle est un cycle récepteur s'il est orienté dans le sens antihoraire.
+			
+			Le cycle est un cycle moteur s'il est orienté dans le sens horaire.
+		\end{definition}
+		
+		\subsection{Transformations idéales}
+		
+		\begin{definition}[Isochore]
+			Transformation à volume constant : 
+			\[
+			W = 0 \text{ et } Q = \Delta U
+			\]
+		\end{definition}
+		
+		\begin{definition}[Monobare / isobare]
+			Une transformation est \textbf{monobare} si \(P_{ext} = cst\). On a alors :
+			\[W = -P_{ext}.\Delta V \text{ et } Q = \Delta U + P_{ext}.\Delta V\]
+			
+			Si elle est en plus réversible \underline{mécaniquement} (\(P = P_{ext} = cst\)), alors elle est \textbf{isobare} et \(W = -P.\Delta V\).
+			
+			
+		\end{definition}
+		
+		\begin{definition}[Monotherme / Isotherme]
+			Une transformation est \textbf{monotherme} si \(T_{ext} = cst\).
+			Si elle est en plus réversible \underline{mécaniquement} et \underline{thermiquement}, alors elle est \textbf{isotherme}.
+			
+			Dans le cas général, \textbf{aucune méthode} pour calculer \(W\) et \(Q\).
+			
+			Dans le cas d'un \textbf{gaz parfait}, on a \fbox{\(\Delta U = 0\)} et :
+			\begin{align*}
+				W &= -Q\\
+				&= -nRT \ln\frac{V_f}{V_i}\\
+				&= +nRT \ln\frac{P_f}{P_i}
+			\end{align*}
+		\end{definition}		
 	\end{minipage}
 	\hfill
 	\vrule
 	\hfill
 	\begin{minipage}[t]{0.45\textwidth}
+		\begin{definition}[Transformation adiabatique réversible]
+			\(Q = 0\) donc \(W = \Delta U\), \(P = P_{ext}\) et \(T = T_{ext}\).
+		\end{definition}
+		
+		\begin{proposition}[Lois de Laplace]
+			Lorsqu'un système subit une transformation adiabatique et réversible (AR), il vérifie :
+			\begin{itemize}
+				\item \(P.V^{\gamma} = cst\)
+				\item \(V^{\gamma - 1}.T = cst\)
+				\item \(P^{1 - \gamma}.T^{\gamma} = cst\)
+			\end{itemize}
+			
+			Valeur de \(\gamma\) :
+			\begin{itemize}
+				\item \(\gamma = \frac{5}{3} = 1,67\) pour un GP monoatomique.
+				\item \(\gamma = \frac{7}{5} = 1,4\) pour un GP diatomique.
+				\item \(\gamma = 1\) pour un GP autre.
+			\end{itemize}
+		\end{proposition}
+	
+		\begin{proposition}[Diagramme de Watt]
+			On peut représenter les transformations idéales dans le diagramme de Watt :
+			\includegraphics[width = \textwidth]{schema1.png}
+		\end{proposition}
 	\end{minipage}
 	
 	
