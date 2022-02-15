@@ -1,0 +1,243 @@
+% TEMPLATE : FICHE DE REVISION
+\documentclass[11pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.5in,bottom=0.5in, left=0.7in, right=0.7in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage[unicode,psdextra]{hyperref}
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{pgfplots}
+\usepackage{bookmark}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\graphicspath{ {./image} } 
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewcommand\qedsymbol{}
+\makeatother
+
+\theoremstyle{cstyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{cstyle}{\newtheorem{proposition}[definition]{Propriété}}
+\theoremstyle{cstyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercice}}
+\theoremstyle{mystyle}{\newtheorem*{methode}{Méthode}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+		\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={white},left=8pt,colframe=white,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={white}, colframe = white, left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,borderline west={2pt}{0pt}{Green!80},enhanced jigsaw,left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{methode}{boxrule=0pt,boxsep=0pt,colback={Aquamarine!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Aquamarine},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}
+
+%\renewcommand{\arraystretch}{1.5}
+
+
+\title{Chapitre 1 : Bases de l'optique géométrique}
+\author{}
+\date{}
+
+\setstretch{1.4}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		\section{Description de la lumière}
+		
+		\subsection{Sources de lumières}
+		
+		\begin{proposition}[Longueur d'onde et fréquence] Elles sont reliées par :
+			\fbox{\( f = \frac{c}{\lambda_0}\)}
+			
+			Avec \(c\) vitesse de la lumière dans le vide.
+		\end{proposition}
+	
+		\begin{definition}[Spectre d'une source lumineuse]
+			Ensemble des fréquences contenues dans la lumière émise de cette source.
+		\end{definition}
+	
+		\subsection{Modélisation de la lumière}
+		
+		\begin{definition}[Optique géométrique]
+			La lumière est considérée comme étant constitué de rayons lumineux indépendants.
+		\end{definition}
+	
+		\begin{definition}[Optique ondulatoire]
+			La lumière est considérée comme une onde.
+		\end{definition}
+	
+		\begin{definition}[Optique quantique ou photonique]
+			La lumière est considérée comme des particules appelées \underline{photons} d'énergie : \fbox{\(E = h.f \)}
+			
+			Avec \(h = 6,63.10^{-34} J.s\) constante de Planck.
+		\end{definition}
+		
+	\end{minipage}
+	\hfill
+	\vrule
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\section{Propagation des rayons lumineux}
+		
+		\subsection{Lois générales}
+		
+		\begin{proposition}[Propagation en ligne droite]
+			Dans un milieu transparent homogène et isotrope (les propriétés sont les mêmes quelle que soit la direction), la lumière se propage en ligne droite.
+		\end{proposition}
+	
+		\begin{definition}[Indice optique]
+			\[ n(\lambda) = \frac{c}{v} \]
+			Avec \(\lambda\) longueur d'onde, \(v\) vitesse de la lumière dans le milieu.
+		\end{definition}
+	
+		\begin{definition}[Miroir]
+			Surface qui limite un milieu transparent et qui renvoie la lumière vers ce milieu.
+		\end{definition}
+	
+		\begin{definition}[Dioptre]
+			Surface qui sépare deux milieux transparents différents.
+		\end{definition}
+	
+		\begin{theorem}[Lois de Snell-Descartes pour la réflexion]
+			Un rayon est réfléchi lorsqu'il arrive sur un miroir ou dioptre et qu'il repart dans le milieu d'où il vient.
+			
+			Le rayon réfléchi vérifie les propriétés suivantes :
+			\begin{itemize}
+				\item Il est contenu dans le plan d'incidence
+				\item L'angle entre le rayon réfléchi et la normale est égale à celui entre le rayon incident et la normale (\(r = i\))
+			\end{itemize}
+		\end{theorem}
+	\end{minipage}
+
+	
+
+	\newpage
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		\begin{theorem}[Lois de Snell-Descartes pour la réfraction]
+			Un rayon est réfracté lorsqu'il arrive sur un dioptre et qu'il le traverse en changeant de direction.
+			Le rayon réfracté vérifie les propriétés suivantes: 
+			\begin{itemize}
+				\item Il est contenu dans le plan d'incidence
+				\item L'angle \(r\) entre le rayon réfléchi et la normale est relié à l'angle \(i\) entre le rayon incident et la normale par la loi \fbox{\(n_1 \sin i = n_2 \sin r\)} avec \(n_1, n_2\) indices optiques des deux milieux.
+			\end{itemize}
+		\end{theorem}
+	
+		\subsection{Comportement d'un rayon réfracté}
+		
+		\begin{proposition}[Position par rapport au rayon incident]
+			On note \(n_1\) (resp. \(n_2\)) indice optique du milieu de départ (resp. d'arrivée) :
+			\begin{itemize}
+				\item Si \fbox{\(n_1 > n_2\)}, alors le rayon réfracté \underline{se rapproche} de la normale.
+				\item Sinon, le rayon \underline{s'en éloigne}.
+			\end{itemize}
+		\end{proposition}
+	
+		\begin{proposition}[Variation de l'angle réfracté en fonction de celui d'incidence]
+			Si le rayon arrive en incidence normale, alors le rayon n'est pas dévié. Si \textbf{l'angle d'incidence} \underline{augmente}, alors celui de \textbf{réfraction} aussi.
+		\end{proposition}
+	
+		\begin{proposition}[Réflexion totale]
+			Lorsque la lumière passe d'un milieu d'indice fort à un autre d'indice plus faible, il existe un angle d'incidence maximal, appelé \textbf{angle limite de réflexion totale}, qui vaut \(\arcsin \frac{n_2}{n_1}\), au-delà du quel la lumière est totalement réfléchie.
+		\end{proposition}
+	\end{minipage}
+	\hfill
+	\vrule
+	\hfill
+	\begin{minipage}[t]{0.45\textwidth}
+		\subsection{Application : fibre optique}
+		
+		\begin{proposition}[Cône d'acceptance / ouverture numérique]
+			Dans une fibre optique, un rayon ne peut se propager que si le rayon incident fait partie du cône d'acceptance, c'est à dire que l'angle incident \(\theta\) est inférieur à une valeur \(\theta_m\). On définit l'ouverture numérique comme le sinus de cet angle.
+			
+			Pour une fibre optique à saut d'indice, telle que le coeur à un indice \(n_c\) et la gaine \(n_g < n_c\), l'ouverture numérique vaut :
+			\[
+				ON = \sin \theta_m = \sqrt{n_c^2 - n_g^2}
+			\] 	
+			
+		\end{proposition}			
+	
+		\begin{proposition}[Dispersion intermodale]
+			C'est la différence de temps entre le rayon le plus lent et le rayon le plus rapide qui parcourent la fibre.
+			Pour une fibre à saut d'indice, on a :
+			\[
+				\Delta t = \frac{L.n_c}{c} \frac{n_c - n_g}{n_g}
+			\]
+			
+			Avec \(L\) longueur de la fibre et \(c\) vitesse de la lumière dans le vide.
+		\end{proposition}
+	\end{minipage}
+
+\end{document}
+	
