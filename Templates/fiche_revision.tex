@@ -1,0 +1,127 @@
+% TEMPLATE : FICHE DE REVISION
+\documentclass[11pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.5in,bottom=0.5in, left=0.7in, right=0.7in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage[unicode,psdextra]{hyperref}
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{pgfplots}
+\usepackage{bookmark}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\graphicspath{ {./image} } 
+
+\titleformat*{\section}{\large\bfseries}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewcommand\qedsymbol{}
+\makeatother
+
+\theoremstyle{cstyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{cstyle}{\newtheorem{proposition}[definition]{Propriété}}
+\theoremstyle{cstyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercice}}
+\theoremstyle{mystyle}{\newtheorem*{methode}{Méthode}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+		\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={white},left=8pt,colframe=white,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={white}, colframe = white, left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,borderline west={2pt}{0pt}{Green!80},enhanced jigsaw,left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{methode}{boxrule=0pt,boxsep=0pt,colback={Aquamarine!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Aquamarine},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}
+
+%\renewcommand{\arraystretch}{1.5}
+
+
+\title{}
+\author{}
+\date{}
+
+\setstretch{1.4}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		
+	\end{minipage}
+
+	\hfill
+	\vrule
+	\hfill
+	
+	\begin{minipage}[t]{0.45\textwidth}
+		
+	\end{minipage}
+
+\end{document}
+	
