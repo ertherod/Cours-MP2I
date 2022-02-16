@@ -1,0 +1,310 @@
+% TEMPLATE : FICHE DE REVISION
+\documentclass[11pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.4in,bottom=0.4in, left=0.7in, right=0.7in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage[unicode,psdextra]{hyperref}
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{pgfplots}
+\usepackage{bookmark}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\graphicspath{ {./image} } 
+
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewcommand\qedsymbol{}
+\makeatother
+
+\theoremstyle{cstyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{cstyle}{\newtheorem{proposition}[definition]{Propriété}}
+\theoremstyle{cstyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercice}}
+\theoremstyle{mystyle}{\newtheorem*{methode}{Méthode}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+		\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={white},left=8pt,colframe=white,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={white}, colframe = white, left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,borderline west={2pt}{0pt}{Green!80},enhanced jigsaw,left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{methode}{boxrule=0pt,boxsep=0pt,colback={Aquamarine!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Aquamarine},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}
+
+%\renewcommand{\arraystretch}{1.5}
+
+
+\title{Chapitre 2 : Systèmes optiques}
+\author{}
+\date{}
+
+\setstretch{1.4}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{minipage}[t]{0.46\textwidth}
+		\begin{definition}[Système optique]
+			Portion de l'espace contenant des dioptres et des miroirs. Il possède une face \underline{d'entrée}, où les rayons incidents arrivent, et une face de \underline{sortie} où sortent les rayons émergents.
+		\end{definition}
+	
+		\begin{definition}[Faisceau lumineux]
+			Ensemble de rayons lumineux. 
+			\begin{itemize}
+				\item S'ils s'écartent, alors le faisceau est \textbf{divergent}.
+				\item S'ils se rapprochent, le faisceau est \textbf{convergent}.
+				\item S'ils sont parallèles, le faisceau est \textbf{collimaté}.
+			\end{itemize}
+		\end{definition}
+	
+		\section{Étude à l'aide de tracés de rayons}
+		\subsection{Objet et image d'un système optique}
+		
+		\begin{definition}[Objet ponctuel] 
+			Point où se coupent les rayons \textbf{incidents}.
+		\end{definition}
+	
+		\begin{definition}[Image ponctuelle]
+			Point où se coupent les rayons \textbf{émergents}.
+		\end{definition}
+	
+		\begin{definition}[Stigmatisme]
+			On considère un système éclairé par un objet ponctuel, si les rayons émergents :
+			\begin{itemize}
+				\item se coupent \textit{exactement} au même point, alors le système est \textbf{rigoureusement stigmatique}.
+				\item se coupent \textit{approximativement} au même point, alors le système est \textbf{approximativement stigmatique}.
+			\end{itemize}
+		\end{definition}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.46\textwidth}
+		\begin{definition}[Réel / Virtuel]
+			Un objet ou image est :
+			\begin{itemize}
+				\item \textbf{Réel} si les rayons passent vraiment par le point.
+				\item \textbf{Virtuel} si ce sont les prolongement qui passent par le point.
+			\end{itemize}
+		\end{definition}
+		\begin{proposition}[Espace objet / Image]
+			Un objet est réel \textit{ssi} il est situé avant la face \textbf{d'entrée} : cette zone est appelée \textit{espace objet}.
+			
+			Une image est réelle \textit{ssi} elle est situé après la face \textbf{de sortie} : cette zone est appelée \textit{espace image}.
+		\end{proposition}
+	
+		\subsection{Objets et images à l'infini}
+		\begin{definition}[Système centré]
+			Système qui possède un \textit{axe optique}, axe tel que le système ne change pas si on le fait tourner autour de cet axe.
+		\end{definition}
+	
+		\begin{definition}[Objet/Image à l'infini]
+			Un objet (resp. image) situé à très grande distance devant les dimensions du système. Le faisceau lumineux qu'il émet (resp. émergent) est quasiment \textit{collimaté}.
+		\end{definition}
+	
+		\begin{definition}[Foyer image]
+			Il est souvent noté \(F'\). Il correspond au point où se situe l'image par le système d'un objet à l'infini. Il peut être réel ou virtuel.
+			
+			\textit{Conséquence :} tout rayon incident parallèle ressort en passant par ce point.
+		\end{definition}
+	
+		\begin{definition}[Foyer objet]
+			Idem, point tel qu'un objet en \(F\) ressort à \(\infty\).
+		\end{definition}
+	\end{minipage}
+
+	\newpage
+	
+	\begin{minipage}[t]{0.46\textwidth}
+		\subsection{Conditions de Gauss}
+		
+		\begin{definition}[Conditions de Gauss]
+			Un système est utilisé dans les \textbf{conditions de Gauss} si tous les rayons incidents sont \textit{proches} et \textit{peu inclinés par rapport} à l'axe optique.
+		\end{definition}
+	
+		\begin{definition}[Plan transverse]
+			Plan \textit{orthogonal} à l'axe optique
+		\end{definition}
+	
+		\begin{definition}[Aplanétisme]
+			Un système centré est aplanétique \textit{ssi} l'image de tout plan transverse est un plan transverse.
+		\end{definition}
+	
+		\begin{proposition}[Système dans les conditions de Gauss]
+			Le système est alors :
+			\begin{itemize}
+				\item approximativement stigmatique.
+				\item aplanétique.
+				\item donnent d'un objet orthogonal à l'axe une image obtenue par homothétie.
+			\end{itemize}
+		\end{proposition}
+	
+		\begin{definition}[Grandissement]
+			Le rapport de l'homothétie s'appelle le grandissement, souvent noté \(\gamma\) :
+			\begin{itemize}
+				\item si \fbox{\(\gamma > 0\)}, l'image est \textit{droite}, si \fbox{\(\gamma < 0\)}, l'image est \textit{renversée}.
+				\item Si \(\abs{\gamma} > 1\), l'image est \textit{agrandie}, sinon elle est \textit{rapetissé}.
+			\end{itemize}
+		\end{definition}
+	
+		\begin{definition}[Plan focal objet/image]
+			Plan transverse contenant le foyer objet / image.
+			Pour tout système aplanétique :
+			\begin{itemize}
+				\item Tout objet à l'infini hors de l'axe a son image dans le plan focal image.
+				\item Tout objet dans le plan focal objet a son image à l'infini hors de l'axe.
+			\end{itemize}
+		\end{definition}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.46\textwidth}
+		\section{Lentilles sphériques minces}
+		
+		\begin{definition}[Lentille mince sphérique]
+			Portion de verre délimitée par deux dioptres sphériques. Elle est mince si son épaisseur au centre est \textit{petite} devant le rayon des faces.
+		\end{definition}
+	
+		\begin{proposition}[Points particuliers]
+			Toute lentille sphérique mince possède un foyer image \(F'\), un foyer objet \(F\) et un centre optique tel que tout rayon incident passant par \(O\) émerge non dévié. \(O\) est l'intersection de la lentille avec l'axe optique, \(F\) et \(F'\) sont symétriques de part et d'autre de \(O\).
+		\end{proposition}
+	
+		\begin{definition}[Distance focale]
+			\(f' = \overline{OF'}\)
+		\end{definition}
+	
+		\begin{definition}[Types de lentilles]
+			On appelle \textit{lentilles convergentes} les lentilles pour lesquelles \(f' > 0\) et les lentilles divergentes celles qui vérifient \(f' < 0\).
+		\end{definition}
+	
+		\subsection{Lois de conjugaison / grandissement}
+		Soit \(AB\) un objet avec \(A\) sur l'axe optique d'une lentille, et \(A'B'\) son image par la lentille.
+		\begin{proposition}[Lois de Newton (origine aux foyers)]
+			\[
+				\overline{FA}.\overline{F'A'} = {-f'}^{2}
+			\]
+			\[
+				\gamma = \frac{\overline{F'A'}}{\overline{F'O}} = \frac{\overline{FO}}{\overline{FA}} 
+			\]
+		\end{proposition}
+	
+		\begin{proposition}[Lois de Descartes (origine au centre)]
+			\[
+				\frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} = \frac{1}{f'}
+			\]
+			\[
+				\gamma = \frac{\overline{OA'}}{\overline{OA}}
+			\]
+		\end{proposition}
+		\begin{proof}
+			On utilise le théorème de Thalès.
+		\end{proof}
+	\end{minipage}
+
+	\newpage
+	
+	\begin{minipage}[t]{0.46\textwidth}
+		\subsection{Défauts des lentilles sphériques}
+		
+		\begin{proposition}[Aberration chromatique]
+			Une lentille n'a pas la même distance focale pour toutes les longueurs d'ondes, ce qui crée des irisations de l'image.
+		\end{proposition}
+	
+		\begin{proposition}[Aberration sphérique]
+			Les rayons lumineux qui passe au bord d'une lentille sphérique sont plus déviés que ceux près du centre : si l'on utilise la totalité de la lentille, l'image est floue.
+		\end{proposition}
+	
+		\begin{proposition}[Distorsions]
+			La présence d'un diaphragme avant ou après la lentille tend à déformer l'image.
+		\end{proposition}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.46\textwidth}
+		\section{Notations sur les miroirs sphériques}
+		
+		\subsection{Miroir plan}
+		
+		\begin{proposition}[Image par un miroir plan]
+			L'image d'un objet par un miroir plan est le symétrique de ce point : \(\overline{OA} = - \overline{OA'}\).
+		\end{proposition}
+	
+		\begin{proposition}[Propriétés du miroir plan]
+			Il réalise le stigmatisme rigoureux entre un objet et son image. Il est aplanétique, et \(\gamma = 1\).
+		\end{proposition}
+	
+		\subsection{Miroirs sphériques non plan}
+		
+		\begin{proposition}[Image par un miroir sphérique concave/convexe]
+			Comportement similaire à une lentille convergente/divergente, avec l'espace image du même côté que l'espace objet.
+		\end{proposition}
+
+	\end{minipage}
+
+\end{document}
+	
