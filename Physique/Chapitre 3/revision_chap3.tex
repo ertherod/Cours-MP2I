@@ -1,0 +1,204 @@
+% TEMPLATE : FICHE DE REVISION
+\documentclass[11pt]{article}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.4in,bottom=0.4in, left=0.7in, right=0.7in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{gensymb}
+\usepackage{titlesec}
+\usepackage[unicode,psdextra]{hyperref}
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}
+\usepackage{pgfplots}
+\usepackage{bookmark}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+
+\graphicspath{ {./image} } 
+
+\titleformat*{\section}{\large\bfseries}
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewcommand\qedsymbol{}
+\makeatother
+
+\theoremstyle{cstyle}{\newtheorem{definition}{Définition}[section]}
+\theoremstyle{cstyle}{\newtheorem{proposition}[definition]{Propriété}}
+\theoremstyle{cstyle}{\newtheorem{theorem}[definition]{Théorème}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemme}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollaire}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remarque}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarques}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Exemple}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Exemples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercice}}
+\theoremstyle{mystyle}{\newtheorem*{methode}{Méthode}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+		\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={white},left=8pt,colframe=white,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={white}, colframe = white, left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,colback={white},colframe=white,borderline west={2pt}{0pt}{Green!80},enhanced jigsaw,left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{methode}{boxrule=0pt,boxsep=0pt,colback={Aquamarine!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Aquamarine},sharp corners,before skip=10pt,after skip=10pt,breakable}
+
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}
+
+%\renewcommand{\arraystretch}{1.5}
+
+
+\title{Chapitre 3 : Système de lentilles}
+\author{}
+\date{}
+
+\setstretch{1.4}
+
+\begin{document}
+	
+	\maketitle
+	
+	\begin{minipage}[t]{0.46\textwidth}
+		\section{La vision humaine}		
+		
+		\begin{definition}[Punctum remotum]
+			Lorsque le cristallin est le plus fin, l'œil donne sur la rétine une image nette pour un objet situé au \textit{punctum remotum}. Pour un oeil normal, ce point est à l'infini.
+		\end{definition}
+	
+		\begin{definition}[Punctum proximum]
+			Idem, avec le point le plus proche. Pour un œil normal, sa distance moyenne est de 25cm. 
+		\end{definition}
+	
+		\begin{definition}[Œil myope / hypermétrope]
+			L'œil est trop (resp. trop peu) convergent: 
+			\begin{itemize}
+				\renewcommand{\labelitemi}{$\circ$}
+				\item Punctum remotum : quelques mètres (resp. \(\infty\))
+				\item Punctum proximum: très faible (resp. quelques mètres)
+				\item Correction : lentille divergente (resp. convergente)
+			\end{itemize}
+		\end{definition}
+	
+		\begin{definition}[Pouvoir séparateur de l'œil]
+			Angle entre deux points que l'œil est capable de distinguer : Il est environ égal à \(3.10^{-4}rad\) (une minute d'arc).
+		\end{definition}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.46\textwidth}
+		\section{Conséquences des lois de conjugaison}
+		
+		\subsection{Projection sur un écran}
+		
+		\begin{proposition}[Projection d'un objet sur un écran]
+			Supposons qu'on dispose d'un objet réel et qu'on veut projeter son image sur un écran (réelle). On utilise une \textit{lentille convergente} (\(f' > 0\)) et on place la l'objet devant la lentille à une \textit{distance supérieure} à \(f'\).
+			
+			L'image sera \textbf{renversée}, \textbf{agrandie} si l'écran est à plus de \(2f'\) de la lentille et \textbf{rapetissé} dans le cas contraire.
+		\end{proposition}		
+	
+		\begin{proposition}[Choix de la distance focale pour projeter un objet sur un écran]
+			Si l'on dispose d'un objet réel qu'on veut projeter sur un écran situé à une distance \(D\), on choisit une lentille telle que \fbox{\(4f' \leq D\)}
+		\end{proposition}
+	
+		\subsection{Lentilles accolées}
+		
+		\begin{proposition}[Lentilles accolées]
+			Deux lentille de distance focales \(f'_{1}\) et \(f'_2\) sont équivalentes à une seule lentille de focale \fbox{\(\displaystyle f' = \frac{1}{f'_1} + \frac{1}{f'_2}\)}
+		\end{proposition}
+		
+		\begin{definition}[Vergence d'une lentille]
+			Elle est définie, pour une lentille de distance focale \(f'\), comme \fbox{\(V = \frac{1}{f'}\)}
+			
+			Elle se mesure en \textit{dioptries} : \(1 \delta = 1m^{-1}\)
+			
+			\textit{Pour des lentilles accolées, \fbox{\(V = V_1 + V_2\)}}
+		\end{definition}
+	\end{minipage}
+
+	\newpage
+	
+	\begin{minipage}[t]{0.46\textwidth}
+		\section{Exemples d'instruments : lunettes et télescopes}
+		
+		\begin{definition}[Lunette astronomique]
+			Elle est composée d'un doublet de lentilles \textit{afocal} :
+			\begin{itemize}
+				\renewcommand{\labelitemi}{$\circ$}
+				\item une première lentille \(\mathcal{L}_1\) de grande distance focale appelée \textbf{objectif}.
+				\item une deuxième \(\mathcal{L_2}\), de courte distance focale appelée \textbf{oculaire}.
+				\item Elles sont placées à une distance égale à la somme de leurs distances focales : telle que \fbox{\(F'_1 = F_2\)}
+			\end{itemize}
+		
+			\textit{Conséquence :} tout faisceau collimaté entrant par l'objectif ressort collimaté de l'oculaire.
+		\end{definition}
+	
+		\begin{proposition}[Grossissement d'une lentille astronomique]
+			Soit un faisceau collimaté entrant dans l'objectif avec un angle \(\alpha\) avec l'axe optique; il ressort collimaté en faisant un angle \(\alpha'\) avec l'axe optique. Le \textbf{grossissement} de la lunette est défini par :
+			\[
+			\boxed{G = \frac{\alpha'}{\alpha}}
+			\] 
+			Si \(f'_1\) est la distance focale de l'objectif et \(f'_2\) celle de l'oculaire, alors :
+			\[
+			\boxed{G = -\frac{f'_1}{f'_2}}
+			\] 
+		\end{proposition}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.46\textwidth}
+	\end{minipage}
+
+\end{document}
+	
