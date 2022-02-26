@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[a4paper, top=0.4in,bottom=0.4in, left=0.5in, right=0.5in, footskip=0.3in, includefoot]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+
+
+\title{Colle n°18: exo-types}
+\date{}
+
+\renewcommand\thesection{Exercice \arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{subsection}.}
+
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ne}{\mathbb{N}^{*}}
+\newcommand{\Os}[1][]{\underset{#1}{\mathcal{O}}}
+\newcommand{\vect}{\text{Vect}}
+\newcommand{\integral}[2]{\ensuremath{\int_{#1}^{#2}}}
+\newcommand{\deriv}[3][]{\ensuremath{\frac{d^{#1}#2}{d#3}}}
+\let\spn\relax\let\Re\relax\let\Im\relax
+\DeclareMathOperator{\Re}{\text{Re}}
+\DeclareMathOperator{\Im}{\text{Im}}
+
+\setstretch{1.2}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Commutant d'une matrice (d'après CC-INP n°73)}
+	
+	{\large\textit{Soit \(C(A)\) l'ensemble des matrices de \(M_2(\R)\) qui commutent avec la matrice \(A = \begin{pmatrix}
+				2 & 1\\ 4 & -1
+			\end{pmatrix}\)}}
+	
+	\begin{enumerate}
+		\item {\large\textit{Montrer que \(C(A)\) est un sous-espace vectoriel de \(M_2(\R)\).}}\\
+		\begin{itemize}
+			\renewcommand{\labelitemi}{$\circ$}
+			\item \fbox{\(C(A) \subset M_2(\R)\)} car les matrices qui commutent avec \(A\) sont de format \((2,2)\).
+			\item \(A \times 0_2 = 0_2 \times A = 0_2\) donc \(0_{2} \in C(A)\)
+						
+			Donc \fbox{\(C(A) \neq \varnothing\)}
+			
+			\item Soit \((P, Q) \in C(A)^2, \lambda \in \R\). Montrons que \(\lambda P + Q \in C(A)\) :
+			\begin{align*}
+			(\lambda P + Q) A &= \lambda PA + QA\\
+			&= \lambda A P + AQ \quad (\text{car } (P, Q) \in C(A)^2)\\
+			&\text{et}\\
+			A (\lambda P + Q) &= \lambda A P + A Q
+			\end{align*}
+			Donc \(\lambda P + Q\) commute avec \(A\). \fbox{\(\lambda P + Q \in C(A)\)}
+		\end{itemize}
+		\underline{Donc \(C(A)\) est un sous-espace vectoriel de \(M_2(\R)\)}
+		
+		\medskip
+		
+		\item {\large\textit{On note \(V(A)\) le sous-espace vectoriel de \(M_2(\R)\) engendré par les puissance de \(A : V(A) = \text{Vect}(A^k, k \in \N)\). Montrer que \(V(A)\) est un sous-espace vectoriel de \(C(A)\).}}\\
+		
+		\begin{itemize}
+			\renewcommand{\labelitemi}{$\circ$}
+			\item \underline{Montrons que \(V(A) \subset C(A)\) :}
+			
+			 Soit \(B \in V(A)\). \(B\) est une combinaison linéaire finie de \((A^k)_{k\in \N}\). 
+			
+			Donc il existe \(k \in \N\) tel que \(B = \sum\limits_{i=1}^{k} \lambda_i A^i\), avec \((\lambda_1, \dots, \lambda_k) \in \R^k\).
+			
+			Alors \(AB = \sum\limits_{i=1}^k \lambda_i A^{i+1}\) et \(BA = \sum\limits_{i=1}^k \lambda_i A^{i+1}\).
+			
+			Donc \fbox{\(AB = BA\) et \(B \in C(A)\)}
+			
+			\medskip
+			
+			\item \underline{Montrons que \(V(A) \neq \varnothing\):}
+			
+			\(A^0 = I\) et \(0 \times I \in \text{Vect}((A^k)_{k\in \N})\).
+			
+			Donc \(0_2 \in V(A)\) et \fbox{\(V(A) \neq \varnothing\)}
+			
+			\item \underline{Montrons que \(V(A)\) est stable par combinaison linéaire :}
+			
+			Soit \((B, C) \in V(A)^2, \lambda \in \R\) :
+			
+			Alors :
+			\begin{itemize}
+				\item \(\exists n \in \N, B = \sum\limits_{i=1}^n \lambda_k A^k, (\lambda_1, \dots, \lambda_n) \in \R^n\)
+				\item \(\exists p \in \N, C = \sum\limits_{i=1}^p \mu_k A^k, (\mu_1, \dots, \mu_p) \in \R^p\)
+			\end{itemize}
+		
+			Donc \(\lambda B + C\) est combinaison linéaire de \(A^k\).
+			
+			Donc \fbox{\(\lambda B + C \in V(A)\)}
+		\end{itemize}
+		\newpage
+	
+		\item {\large\textit{Montrer que \(A^2\) est combiansion linéaire de \(A\) et \(I\). Que peut-on en déduire sur \(V(A)\)} ?} 
+		
+		On a : 
+		\[
+			A^2 = \begin{pmatrix}
+				8 & 1\\
+				4 & 5
+			\end{pmatrix} = A + 6I
+		\]
+		
+		\underline{Montrons que \(V(A) = \text{Vect}(A, I)\) :}
+		
+		\begin{itemize}
+			\renewcommand{\labelitemi}{$\circ$}
+			\item \(\boxed{\supset}\) : Soit \(M \in \text{Vect}(I, A)\).
+			Alors il existe \((a,b) \in \R^2\) tel que \(M = aI + bA\).
+			
+			Donc \(M\) est une combinaison linéaire finie de \((A^k)_{k\in\N}\).
+			
+			Donc \fbox{\(\vect(I,A) \subset \vect((A^k)_{k\in\N})= V(A)\)}
+			
+			\medskip
+			
+			\item \(\boxed{\subset}\) : Soit \(M \in V(A)\).
+			
+			Donc il existe \(n \in \N, M = \sum\limits_{i=1}^{n} \lambda_k A^k, (\lambda_1, \dots, \lambda_n) \in \R^n\).
+			
+			On veut montrer \textit{par récurrence}, \(\forall k \in \N, H(k) : ``A^k \text{est combinaison linéaire de} (A,I)"\) :
+			\begin{itemize}
+				\item \underline{Initialisation : \(k = 0\)} :
+				\[
+					A^0 = I = 0 A + I 
+				\]
+				Donc \fbox{\(H(0)\) est vraie.}
+				\medskip
+				\item \underline{Hérédité : Soit \(k \in \N\) :} On suppose \(H(k)\)vraie, montrons que \(H(k+1)\) est vraie.
+				
+				\begin{align*}
+					A^{k+1} &= A \times A^k\\
+					&= A (aI + bA) \quad \text{ par hypothèse de récurrence avec } (a,b) \in \R^2\\
+					&= aA + bA^2\\
+					&= aA + b(A + 6I)\\
+					A^{k+1} &= \boxed{(a+b) A + 6bI}
+				\end{align*}
+			
+				Donc \(H(k+1)\) est vraie.
+				
+				\medskip
+				
+				\item \underline{Bilan :} \(\forall k \in \N\), \(A^k\) est combinaison linéaire de \(I\) et \(A\).
+				
+			\end{itemize}
+			\medskip
+			
+			Or \(\vect(I, A)\) est un espace vectoriel, donc \(\vect((A^k)_{k\in\N}) \subset \vect(I, A)\)
+			\end{itemize}
+		
+			Donc \fbox{\(\vect(I, A) = \vect((A^k)_{k\in\N})\)}
+			
+			\bigskip
+			
+			\item {\large\textit{Déterminer une base de \(C(A)\). A-t-on \(C(A) = V(A)\)} ?}
+			
+			On cherche les matrices \(M\) qui vérifient : \(MA = AM\).
+			
+			On pose \(M = \begin{pmatrix}
+				a & b\\ c & d
+			\end{pmatrix}, (a,b,c,d) \in \R^4\)
+		
+			On obtient :
+			\[
+				AM = \begin{pmatrix} 2a + c & 2b + d \\ 4a - c & 4b - d\end{pmatrix}
+			\]
+			\[
+				MA = \begin{pmatrix} 2a + 4b & a - b \\ 2c + 4d & c - d \end{pmatrix}
+			\]
+			
+			Il faut donc résoudre le système \(AM = MA\).
+			
+			On obtient \(C(A) = \left\{ \begin{pmatrix} 3b + d & b \\ 4b & d \end{pmatrix}, (b,d) \in \R^2\right\}\)
+			
+			Donc \(C(A) = \vect\left(B,I\right), \text{avec } B = \begin{pmatrix} 3 & 1 \\ 4 & 0 \end{pmatrix}\)
+			
+			\newpage
+			
+			\underline{Montrons que \(C(A) = V(A)\) :}
+			\begin{itemize}
+				\renewcommand{\labelitemi}{$\circ$}
+				\item \fbox{$\supset$} : Déjà vu dans (2)
+				\item \fbox{$\subset$} : 
+				\begin{itemize}
+					\item \(V(A)\) est un espace vectoriel
+					\item \(
+						\begin{cases}
+							I \in V(A)\\
+							B = I + A \in V(A)
+						\end{cases}
+					\)
+					\item Donc \(C(A) \subset V(A)\)
+				\end{itemize}
+			
+				\underline{Bilan :} \(V(A) = Vect(I, B) = C(A)\)
+				
+			\end{itemize}
+			\bigskip
+		
+			\underline{Montrons que \((I,A)\) est une base de \(C(A)\) :}
+			
+			\begin{itemize}
+				\renewcommand{\labelitemi}{$\circ$}
+				\item \fbox{\((I, A)\) engendre \(C(A)\)} (car \(C(A) = \vect(I,A)\))
+				\item Montrons que \((I, A)\) est une famille libre : 
+				
+				Soit \((a,b) \in \R^2\) tel que \(aI + bA = 0_2\), montrons que \(a = b = 0\) :
+				\[
+					aI + bA = 
+					\begin{pmatrix}
+						a + 2b & b\\
+						4b & a - b
+					\end{pmatrix} = 
+					\begin{pmatrix}
+						0 & 0\\
+						0 & 0
+					\end{pmatrix}
+				\]
+				
+				On a \(b = 0\) et par substitution on trouve \(a = 0\), donc \fbox{\((I, A)\) est une famille libre}
+				
+				\end{itemize}
+			
+				\underline{Donc \((I,A)\) est une base de \(C(A)\)}
+	\end{enumerate}
+
+	\section{Application de la décomposition en éléments simples}
+	
+	\begin{enumerate}
+		\item \textit{\large \textbf{Cours :} Soit \(F = \frac{P}{Q}\) sous forme irréductible. Si \(\alpha\) est un pôle simple de \(F\), déterminer sa partie polaire (deux formules et preuves attendues)}
+				
+		On cherche \(F\) sous la forme \(\displaystyle F = \frac{a}{X - \alpha} + F_1(X)\), avec \(\alpha\) qui n'est pas pôle de \(F_1\)
+		
+		\bigskip
+		
+		\underline{Formule 1 :} \(\displaystyle a = \lim\limits_{x \to \alpha} \frac{(X-\alpha)P(X)}{Q(X)}\)
+		
+		\textit{Preuve :} On cherche \(a\) tel que : 
+		\[
+			\frac{P(X)}{Q(X)} = \frac{a}{X-\alpha} + F_1(X)
+		\]
+		\[
+			\Longleftrightarrow (X-\alpha)  \frac{P(X)}{Q(X)} = a + (X- \alpha) F_1(X)
+		\]
+		
+		Or \( \lim\limits_{x \to \alpha} a + (x - \alpha)F_1(x) = a\) (car \(\alpha\) n'est pas pôle de \(F_1\)).
+		
+		Donc par \textit{unicité de la limite} : \fbox{\(\displaystyle\lim\limits_{x \to \alpha}  \frac{(x - \alpha)P(x)}{Q(x)} = a\)}
+		
+		\bigskip
+		
+		\underline{Formule 2 :} \(\displaystyle a = \frac{P(\alpha)}{Q'(\alpha)}\)
+		
+		 \underline{\(Q\) peut s'écrire sous la forme \(Q(X) = (X - \alpha) R(X)\), avec \(R(\alpha) \neq 0\)} (\(\alpha\) est pôle simple de \(F\)).
+		 
+		 Donc \(Q'(X) = R(X) + (X-\alpha) R'(X)\). Évalué en \(\alpha, \, Q'(\alpha) = R(\alpha) = \frac{Q(\alpha)}{(X-\alpha)}\)
+		 
+		 Donc \(\displaystyle \frac{P(\alpha)}{Q'(\alpha)} = \frac{(X - \alpha)P(\alpha)}{Q(\alpha)}\)
+	 
+ 	\end{enumerate}
+	
+\end{document}
